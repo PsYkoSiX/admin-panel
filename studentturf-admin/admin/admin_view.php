@@ -18,13 +18,14 @@ error_reporting(E_ALL);
                 <thead>
                 <th>Admin ID</th>
                 <th>Email</th>
-                <th>Emails CC to</th>
+                <th>Include List</th>
                 </thead>
                 <tbody>
                 <?php
                 try {
                     $sql = "SELECT * FROM admin";
                     $stmt = $db->query($sql);
+                    $list_count = $stmt->rowCount();
 
                     foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
                         $products[] = $row;
@@ -53,7 +54,7 @@ error_reporting(E_ALL);
                             </tr>';
                             }
                             echo '</tbody></table>';
-                            echo $pageNumbers;
+//                            echo $pageNumbers;
                         } else {
                             echo '<p class="alert alert-error">There are no values for display</p>';
                         }
@@ -65,8 +66,11 @@ error_reporting(E_ALL);
                 </tbody>
             </table>
             <div class="margin-right-10">
-                <a class="btn btn-small pull-left" href="change_password.php">Change my password</a>
+                <a class="paginate pull-left" href="change_password.php">Change my password</a>
 
+                <div class="span3 paginate text-center"><a
+                        href="email_send_admin.php" data-toggle="modal"
+                        data-target="#email_Modal">Compose email</a></div>
                 <div class="span6 pull-right text-right" id="message"></div>
             </div>
         </div>
@@ -109,6 +113,25 @@ error_reporting(E_ALL);
     <?php include 'unset_sessions.php';?>
 </div>
 
+
+<div id="email_Modal" class="modal hide fade">
+    <div class="modal-header">
+        <a class="close" href="admin_view.php<?php if (isset($_GET['page'])) {
+            echo '?page=' . $_GET['page'];
+            $_SESSION['page'] = $_GET['page'];
+        }?>">×</a>
+        <h4>Email sending window</h4>
+    </div>
+    <div class="modal-body">
+        <!--Auto inject user_details.php to here by modal-->
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-small" href="admin_view.php<?php if (isset($_GET['page'])) {
+            echo '?page=' . $_GET['page'];
+        }?>">Close</a>
+    </div>
+</div>
+
 <!--<script src="javascript/jquery-1.4.2.js"></script>-->
 <script type="text/javascript">
     function change_check(id) {
@@ -143,3 +166,6 @@ error_reporting(E_ALL);
         }, 1000 * 5);
     });
 </script>
+
+<script src="javascript/bootstrap.js" type="text/javascript"></script>
+<script src="javascript/jquery.js" type="text/javascript"></script>

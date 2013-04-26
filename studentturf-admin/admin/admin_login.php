@@ -30,13 +30,24 @@
                     <button type="submit" class="btn btn-small btn-success"> Sign in</button>
                     <a class="pull-right padding-top-10" href="forgot_password.php">Need help on password..?</a>
                 </div>
-                <?php if (isset($_SESSION['login_error'])) {
-                    echo '<div class="alert alert-error padding-top-10">';
-                    echo "<label>" . $_SESSION['login_error'] . "</label>";
-                    echo '</div>';
-                }
-                ?>
+                <div id="message">
+                    <?php if (isset($_SESSION['login_error'])) {
+                        echo '<div class="alert alert-error padding-top-10">';
+                        echo "<label>" . $_SESSION['login_error'] . "</label>";
+                        echo '</div>';
+                    }
+                    ?>
+                </div>
             </form>
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#message').show();
+        setTimeout(function () {
+            $('#message').hide();
+        }, 1000 * 5);
+    });
+</script>
