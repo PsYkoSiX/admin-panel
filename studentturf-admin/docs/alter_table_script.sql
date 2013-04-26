@@ -1,0 +1,1 @@
+ALTER TABLE studentturf.admin ADD cc_status varchar(7) DEFAULT 'checked';
