@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 include 'DB_connection.php';
 session_start();
 
-if ($_POST['username'] == null && $_POST['password'] == null && $_POST['re_password'] == null) {
+if ($_POST['username'] == null || $_POST['password'] == null || $_POST['re_password'] == null) {
     $_SESSION['pw_add_error'] = 'Please do not send empty values..!';
     header('location:admin_view.php');
 } else {

@@ -90,17 +90,31 @@ error_reporting(E_ALL);
 
             <form method="post" class="form-signin" action="add_admin_check.php">
                 <label>
-                    <input type="text" name="username" class="input-block-level" placeholder="Email address"/>
+                    <input type="text" name="username" id="username" class="input-block-level"
+                           placeholder="Email address"/>
+                    <script type="text/javascript">
+                        var username = new LiveValidation('username', { validMessage: '', wait: 500});
+                        username.add(Validate.Presence, {failureMessage: "Email address required"});
+                        username.add(Validate.email, {failureMessage: "Invalid" });
+                        username.add(Validate.Length, {maximum: 50});
+                        username.add(Validate.Format,
+                            { pattern: /^(.+@.+\.+.+)$/i, failureMessage: "Invalid email address" });
+                    </script>
                 </label>
                 <label>
-                    <input type="password" name="password" class="input-block-level" placeholder="Password"/>
+                    <input type="password" name="password" id="password" class="input-block-level" placeholder="Password"/>
+                    <script type="text/javascript">
+                        var password = new LiveValidation('password', { validMessage: '', wait: 500});
+                        password.add(Validate.Presence, {failureMessage: "Password required"});
+                    </script>
                 </label>
                 <label>
-                    <input type="password" name="re_password" class="input-block-level" placeholder="Re type password"/>
+                    <input type="password" name="re_password" id="re_password" class="input-block-level" placeholder="Re type password"/>
+                    <script type="text/javascript">
+                        var re_password = new LiveValidation('re_password', { validMessage: '', wait: 500});
+                        re_password.add(Validate.Presence, {failureMessage: "Please retype password"});
+                    </script>
                 </label>
-                <!--        <label class="checkbox">
-                            <input type="checkbox" value="remember-me"> Remember me
-                        </label>-->
                 <div>
                     <button type="submit" class="btn btn-small btn-success">Create new admin</button>
                 </div>
@@ -121,6 +135,11 @@ error_reporting(E_ALL);
                 </div>
             </form>
         </div>
+    </div>
+    <div class="text-justify">
+        Admin can create new admin by providing valid email address and password. By checking on the included list, the
+        relevant admin user will be added to the CC list of emails when sending emails to student turf users. Admins can
+        send emails to admins by selecting the included list and click on compose email link.
     </div>
     <?php include 'unset_sessions.php';?>
 </div>

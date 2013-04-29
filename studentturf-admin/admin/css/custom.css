@@ -115,3 +115,30 @@ table {
 }
 
 /*Pagination css end*/
+
+
+/*START Live validations*/
+.LV_valid {
+    color: #25941b;
+}
+
+.LV_invalid {
+    color: #F41010;
+}
+
+.LV_validation_message {
+    font-size: 11px;
+    color: #F41010;
+}
+
+.LV_valid_field {
+    color: #129442;
+    background-color: #b1e8ac;
+}
+
+.LV_invalid_field {
+    color: #F41010;
+    background-color: rgb(255, 211, 187)
+}
+
+/*END Live validations*/

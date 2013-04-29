@@ -20,7 +20,7 @@ require_once('libs/AdminTemplate.php');
     <link href="css/custom.css" rel="stylesheet"/>
 
     <script src="javascript/bootstrap.js" type="text/javascript"></script>
-<!--    <script src="javascript/bootstrap.min.js" type="text/javascript"></script>-->
+    <script src="javascript/jqueryLiveValidation.js" type="text/javascript"></script>
     <script src="javascript/jquery.js" type="text/javascript"></script>
 </head>
 
