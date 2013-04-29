@@ -98,7 +98,7 @@ error_reporting(E_ALL);
                         username.add(Validate.email, {failureMessage: "Invalid" });
                         username.add(Validate.Length, {maximum: 50});
                         username.add(Validate.Format,
-                            { pattern: /^(.+@.+\.+.+)$/i, failureMessage: "Invalid email address" });
+                            { pattern: /^(\S+@\S+\.+([A-Za-z]{2,})+)$/i, failureMessage: "Invalid email address" });
                     </script>
                 </label>
                 <label>
