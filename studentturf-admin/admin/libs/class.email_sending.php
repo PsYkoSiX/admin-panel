@@ -18,7 +18,7 @@ class EmailSender
         $mail->Port = 465; // Used instead of 587 when only POP mail is selected
         $mail->SMTPAuth = true;
         $mail->Username = "malithn@9696.lk"; // SMTP username
-        $mail->Password = 'm@litHni'; // SMTP password
+        $mail->Password = 'password'; // SMTP password
         foreach ($receivers as $receiver) {
             if ($receiver != null && $receiver != '') {
                 $mail->AddAddress($receiver); //replace myname and mypassword to yours

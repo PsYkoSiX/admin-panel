@@ -111,7 +111,7 @@ error_reporting(E_ALL);
         <h4>Email sending window</h4>
     </div>
     <div class="modal-body">
-        <!--Auto inject user_details.php to here by modal-->
+        <!--Auto inject email_send_single.php to here by modal-->
     </div>
     <div class="modal-footer">
         <a class="btn btn-small" href="index.php<?php if (isset($_GET['page'])) {

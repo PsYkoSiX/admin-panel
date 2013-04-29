@@ -23,4 +23,4 @@ if ($email_sender->sendEmail($emails, $email_subject, $email_body, $email_cc)) {
     $_SESSION['email_send_error'] = 'Error occur while sending email, please try again later';
     unset($_SESSION['email_send_success']);
 }
-header("location:index.php?page=" . $_SESSION['page']);
+header("location:admin_view.php?page=" . $_SESSION['page']);

@@ -5,6 +5,7 @@ include 'session_check.php';
 include 'libs/pagination.class.php';
 include 'DB_connection.php';
 include 'admin_layout.php';
+include 'message_user.php';
 
 ini_set('display_errors', 1);
 ini_set('log_errors', 1);
@@ -19,6 +20,7 @@ error_reporting(E_ALL);
                 <th>Admin ID</th>
                 <th>Email</th>
                 <th>Include List</th>
+                <th>Action</th>
                 </thead>
                 <tbody>
                 <?php
@@ -51,6 +53,7 @@ error_reporting(E_ALL);
                                     <td>" . $productArray['admin_name'] . "</td>
                                     <td>" . '<input type=checkbox id="' . $productArray['id'] . '" rel="' . $productArray['cc_status'] . '"
                                             ' . $productArray['cc_status'] . ' onclick="change_check(this.id)"/></td>
+                                    <td><a href="delete_admin.php?remove=' . $productArray['admin_name'] . '"  data-toggle="modal" data-target="#delete_admin">Remove</a></td>
                             </tr>';
                             }
                             echo '</tbody></table>';
@@ -71,7 +74,16 @@ error_reporting(E_ALL);
                 <div class="span3 paginate text-center"><a
                         href="email_send_admin.php" data-toggle="modal"
                         data-target="#email_Modal">Compose email</a></div>
-                <div class="span6 pull-right text-right" id="message"></div>
+                <div class="span6 pull-right text-right" id="message">
+                    <?php
+                    if (isset($_SESSION['admin_delete_success'])) {
+                        echo '<span class="alert alert-success">' . $_SESSION["admin_delete_success"] . '</span>';
+                    }
+                    if (isset($_SESSION['admin_delete_error'])) {
+                        echo '<span class="alert alert-error">' . $_SESSION["admin_delete_error"] . '</span>';
+                    }
+                    ?>
+                </div>
             </div>
         </div>
         <div class="span4">
@@ -123,9 +135,22 @@ error_reporting(E_ALL);
         <h4>Email sending window</h4>
     </div>
     <div class="modal-body">
-        <!--Auto inject user_details.php to here by modal-->
+        <!--Auto inject email_send_admin.php to here by modal-->
     </div>
     <div class="modal-footer">
+        <a class="btn btn-small" href="admin_view.php<?php if (isset($_GET['page'])) {
+            echo '?page=' . $_GET['page'];
+        }?>">Close</a>
+    </div>
+</div>
+
+<div class="modal hide fade" id="delete_admin">
+    <div class="modal-body text-center">
+        <!--Auto inject admin_delete.php to here by modal-->
+    </div>
+    <div class="modal-footer">
+        <a href="delete_admin_check.php"
+           class="btn btn-small btn-danger">Delete</a>
         <a class="btn btn-small" href="admin_view.php<?php if (isset($_GET['page'])) {
             echo '?page=' . $_GET['page'];
         }?>">Close</a>
@@ -165,7 +190,18 @@ error_reporting(E_ALL);
             $('#status_message').hide();
         }, 1000 * 5);
     });
-</script>
 
+    $(document).ready(function () {
+        $('message').show();
+        setTimeout(function () {
+            $('#message').hide();
+        }, 1000 * 5);
+    });
+</script>
+<!--Removing the status messages permanently-->
+<?php
+unset($_SESSION['admin_delete_success']);
+unset($_SESSION['admin_delete_error']);
+?>
 <script src="javascript/bootstrap.js" type="text/javascript"></script>
 <script src="javascript/jquery.js" type="text/javascript"></script>
