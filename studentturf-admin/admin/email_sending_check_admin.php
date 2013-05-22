@@ -17,10 +17,10 @@ $email_cc = array();
 $email_sender = new EmailSender();
 
 if ($email_sender->sendEmail($emails, $email_subject, $email_body, $email_cc)) {
-    $_SESSION['email_send_success'] = 'Email successfully sent...';
-    unset($_SESSION['email_send_error']);
+    $_SESSION['header_message_success'] = 'Email successfully sent...';
+    unset($_SESSION['header_message_error']);
 } else {
-    $_SESSION['email_send_error'] = 'Error occur while sending email, please try again later';
-    unset($_SESSION['email_send_success']);
+    $_SESSION['header_message_error'] = 'Error occur while sending email, please try again later';
+    unset($_SESSION['header_message_success']);
 }
 header("location:admin_view.php?page=" . $_SESSION['page']);

@@ -60,9 +60,11 @@ error_reporting(E_ALL);
                             <td>" . $productArray['contactnumber'] . "</td>
                             <td>" . $productArray['universityorinstitute'] . "</td>
                             <td>" . $productArray['yearofgraduation'] . "</td>
-                            <td><a href='user_details_check.php?userId=" . $productArray['id'] . "' data-toggle='modal' data-target='#user_detail_Modal'>View</a>
+                            <td><a href='user_details_check.php?userId=" . $productArray['id'] . "' data-toggle='modal' data-target='#user_detail_Modal'>view</a>
                                 <span> | </span>
-                                <a href='email_send_single.php?userEmail=" . $productArray['email'] . "' data-toggle='modal' data-target='#email_Modal'>Send email</a>
+                                <a href='email_send_single.php?userEmail=" . $productArray['email'] . "' data-toggle='modal' data-target='#email_Modal'>send email</a>
+                                <span> | </span>
+                                <a href='user_remove.php?userEmail=" . $productArray['email'] . "' data-toggle='modal' data-target='#User_Remove_Modal'>remove</a>
                             </td>
                             </tr>";
                     }
@@ -120,9 +122,27 @@ error_reporting(E_ALL);
     </div>
 </div>
 
+<div id="User_Remove_Modal" class="modal hide fade">
+    <div class="modal-header">
+        <a class="close" href="index.php<?php if (isset($_GET['page'])) {
+            echo '?page=' . $_GET['page'];
+            $_SESSION['page'] = $_GET['page'];
+        }?>">×</a>
+        <h4>Remove confirmation window</h4>
+    </div>
+    <div class="modal-body">
+        <!--Auto inject email_send_single.php to here by modal-->
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-small" href="index.php<?php if (isset($_GET['page'])) {
+            echo '?page=' . $_GET['page'];
+        }?>">Close</a>
+    </div>
+</div>
+
 <?php
-unset($_SESSION['email_send_error']);
-unset($_SESSION['email_send_success']);
+unset($_SESSION['header_message_error']);
+unset($_SESSION['header_message_success']);
 ?>
 <script src="javascript/bootstrap.js" type="text/javascript"></script>
 <script src="javascript/jquery.js" type="text/javascript"></script>

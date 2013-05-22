@@ -36,6 +36,7 @@
                         echo "<label>" . $_SESSION['login_error'] . "</label>";
                         echo '</div>';
                     }
+                    unset($_SESSION['login_error']);
                     ?>
                 </div>
             </form>

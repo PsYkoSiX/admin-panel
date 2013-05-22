@@ -2,11 +2,11 @@
 
 <div id="header_message" class="container">
     <?php
-    if (isset($_SESSION['email_send_error'])) {
-        echo "<div class='alert alert-error'>" . $_SESSION['email_send_error'] . "</div>";
+    if (isset($_SESSION['header_message_error'])) {
+        echo "<div class='alert alert-error'>" . $_SESSION['header_message_error'] . "</div>";
     }
-    if (isset($_SESSION['email_send_success'])) {
-        echo "<div class='alert alert-success'>" . $_SESSION['email_send_success'] . "</div>";
+    if (isset($_SESSION['header_message_success'])) {
+        echo "<div class='alert alert-success'>" . $_SESSION['header_message_success'] . "</div>";
     }
     ?>
 </div>
