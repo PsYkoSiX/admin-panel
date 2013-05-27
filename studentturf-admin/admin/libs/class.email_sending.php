@@ -11,13 +11,13 @@ class EmailSender
         $mail = new PHPMailer();
 
         $mail->IsSMTP(); // set mailer to use SMTP
-        $mail->From = "malithn@9696.lk";
-        $mail->FromName = "Student Turf Admin";
+        $mail->From = "malithn@hsenidmobile.lk";
+        $mail->FromName = "Student Turf Team";
         $mail->Host = "smtp.gmail.com"; // specif smtp server
         $mail->SMTPSecure = "ssl"; // Used instead of TLS when only POP mail is selected
         $mail->Port = 465; // Used instead of 587 when only POP mail is selected
         $mail->SMTPAuth = true;
-        $mail->Username = "malithn@9696.lk"; // SMTP username
+        $mail->Username = "malithn@hsenidmobile.com"; // SMTP username
         $mail->Password = 'password'; // SMTP password
         foreach ($receivers as $receiver) {
             if ($receiver != null && $receiver != '') {
@@ -29,7 +29,7 @@ class EmailSender
                 $mail->AddCC($cc);
             }
         }
-        $mail->AddReplyTo("students@hsenidmobile.com", "Student Turf Admin");
+        $mail->AddReplyTo("students@hsenidmobile.com", "Student Turf Team");
         $mail->WordWrap = 50; // set word wrap
 //$mail->AddAttachment("c:\\temp\\js-bak.sql"); // add attachments
 //$mail->AddAttachment("c:/temp/11-10-00.zip");
